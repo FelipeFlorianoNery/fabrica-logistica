@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pedidos")
 
@@ -22,4 +24,8 @@ public class PedidoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoPedido);
     }
 
+    @GetMapping
+    public ResponseEntity<List<Pedido>> buscarTodos() {
+        return ResponseEntity.ok(pedidoRepository.findAll());
+    }
 }
